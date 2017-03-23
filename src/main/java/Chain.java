@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 
+
 public class Chain {
 	
+	
 	ArrayList<Block> chain;
+	
 	
 	public void Chain() {
 		
@@ -17,6 +20,7 @@ public class Chain {
 		
 	}
 	
+	
 	public Block getLastBlock() {
 		
 		int lastElementIndex = this.chain.size() - 1;
@@ -25,6 +29,7 @@ public class Chain {
 		return lastBlock;
 		
 	}
+	
 	
 	public boolean isValidNewBlock(Block previousBlock, Block newBlock) {
 		
@@ -43,6 +48,7 @@ public class Chain {
 		
 		return true;
 	}
+	
 	
 	public Block generateNextBlock(String data) {
 		
@@ -69,6 +75,17 @@ public class Chain {
 		
 	}
 	
+	
+	// TODO: handle chain whole chain from another peer
+	public void handleChain(Block[] newChain) {
+		
+	}
+	
+	
 	// TODO: function that converts the chain to JSON
+	
+	
+	// TODO: function that converts json to array of blocks (chain)
+	
 		
 }

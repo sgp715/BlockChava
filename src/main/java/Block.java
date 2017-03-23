@@ -2,7 +2,9 @@ import java.util.Date;
 import org.apache.commons.codec.digest.DigestUtils;
 //import org.json.*;
 
+
 public class Block {
+	
 	
 	static public String calculateHash(Block someBlock) { 
 		
@@ -14,11 +16,13 @@ public class Block {
 		return someHash;
 	}
 	
+	
 	int index;
 	String previousHash;
 	Date timeStamp;
 	String data;
 	String hash;
+	
 	
 	public Block(int index, String previousHash, String data) {
 		
@@ -37,8 +41,11 @@ public class Block {
 		
 	}
 	
+	
 	// TODO: overload constructor to create block from json
+	
 	
 	// TODO: function that converts the object to json
 
+	
 }
