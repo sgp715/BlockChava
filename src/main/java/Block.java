@@ -1,8 +1,18 @@
 import java.util.Date;
-
 import org.apache.commons.codec.digest.DigestUtils;
+//import org.json.*;
 
 public class Block {
+	
+	static public String calculateHash(Block someBlock) { 
+		
+		String someHash = DigestUtils.sha1Hex(someBlock.index + 
+				someBlock.previousHash + 
+				someBlock.timeStamp + 
+				someBlock.data);
+		
+		return someHash;
+	}
 	
 	int index;
 	String previousHash;
@@ -26,5 +36,9 @@ public class Block {
 		System.out.println("this is the hash " + this.hash);
 		
 	}
+	
+	// TODO: overload constructor to create block from json
+	
+	// TODO: function that converts the object to json
 
 }
