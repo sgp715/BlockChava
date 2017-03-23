@@ -21,9 +21,9 @@ public class Chain {
 	}
 	
 	
-	public Block getLastBlock() {
+	public Block getLastBlock(ArrayList<Block> chain) {
 		
-		int lastElementIndex = this.chain.size() - 1;
+		int lastElementIndex = chain.size() - 1;
 		Block lastBlock = this.chain.get(lastElementIndex);
 		
 		return lastBlock;
@@ -52,7 +52,7 @@ public class Chain {
 	
 	public Block generateNextBlock(String data) {
 		
-		Block lastBlock = getLastBlock();
+		Block lastBlock = getLastBlock(this.chain);
 		
 		int nextBlockIndex = lastBlock.index + 1;
 		String lastHash = lastBlock.hash;
@@ -65,7 +65,7 @@ public class Chain {
 	
 	public void addBlock(Block newBlock) {
 		
-		Block lastBlock = getLastBlock();
+		Block lastBlock = getLastBlock(this.chain);
 		
 		if (isValidNewBlock(lastBlock, newBlock)) {
 			chain.add(newBlock);
@@ -77,7 +77,10 @@ public class Chain {
 	
 	
 	// TODO: handle chain whole chain from another peer
-	public void handleChain(Block[] newChain) {
+	public void handleNewChain(ArrayList<Block> newChain) {
+		
+		Block newChainLastBlock = getLastBlock(newChain);
+		Block chainLastBlock = getLastBlock(this.chain);
 		
 	}
 	
