@@ -82,6 +82,27 @@ public class Chain {
 		Block newChainLastBlock = getLastBlock(newChain);
 		Block chainLastBlock = getLastBlock(this.chain);
 		
+		if (newChainLastBlock.index > chainLastBlock.index) {
+			
+			if (chainLastBlock.hash == newChainLastBlock.previousHash) {
+				// simplest case: add a single block on
+				System.out.println("Adding a new block");
+				addBlock(newChainLastBlock);
+				// TODO: have it broadcast to other nodes
+			} 
+//			else if () { 
+//				// we have to get the rest of the chain
+//				
+//			} else {
+//				// check that the chain is valid 
+//			}
+			
+		} else {
+			
+			System.out.println("Recieved block is not longer so do nothing");
+			
+		}
+		
 	}
 	
 	
