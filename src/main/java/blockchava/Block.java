@@ -33,7 +33,6 @@ public class Block {
 		timeStamp = new Date().toString();
 		data = d;
 		
-		// need things to be strings before we can hash
 		hash = DigestUtils.sha1Hex(
 				index + 
 				previousHash + 
@@ -76,7 +75,6 @@ public class Block {
 	}
 	
 	
-	// TODO: function that converts the object to json
 	public String blockToJson() {
 		
 		JSONObject jsonBlock = new JSONObject();
@@ -89,7 +87,6 @@ public class Block {
 			jsonBlock.put("hash", hash);
 		} catch (JSONException e) {
 			System.out.print("There was an excpetion creating json from block");
-//			e.printStackTrace();
 		}		
 		
 		return jsonBlock.toString();

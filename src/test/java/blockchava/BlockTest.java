@@ -32,6 +32,7 @@ public class BlockTest {
         
     }
     
+    
     @Test 
     public void testJsonBlock() {
     	
@@ -63,6 +64,7 @@ public class BlockTest {
         
     }
     
+    
    @Test
    public void testBlockToJson() {
 	   Block block = new Block(index, previousHash, data);
@@ -79,5 +81,6 @@ public class BlockTest {
 		}
 	   
    }
+   
     
 }

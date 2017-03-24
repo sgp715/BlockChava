@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.json.*;
 
+
 public class Chain {
-	
 	
 	ArrayList<Block> chain;
 	
