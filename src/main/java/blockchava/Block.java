@@ -21,7 +21,7 @@ public class Block {
 	
 	int index;
 	String previousHash;
-	Date timeStamp;
+	String timeStamp;
 	String data;
 	String hash;
 	
@@ -30,7 +30,7 @@ public class Block {
 		
 		index = i;
 		previousHash = ph;
-		timeStamp = new Date();
+		timeStamp = new Date().toString();
 		data = d;
 		
 		// need things to be strings before we can hash
@@ -42,10 +42,38 @@ public class Block {
 		
 	}
 	
-	// TODO: overload constructor to create block from json
-//	public Block(JSON json) {
-//		
-//	}
+	// TODO: make these constructors use same code
+	public Block(JSONObject jsonBlock) {
+		
+		try {
+			index = jsonBlock.getInt("index");
+			previousHash = jsonBlock.getString("previous_hash");
+			timeStamp = jsonBlock.getString("time_stamp");
+			data = jsonBlock.getString("data");
+			hash = jsonBlock.getString("hash");
+		} catch (JSONException e1) {
+			System.out.println("Could not get values from json");
+		}
+		
+	}
+	
+	
+	public Block(String jsonStringBlock) {
+		
+		JSONObject jsonBlock;
+		try {
+			jsonBlock = new JSONObject(jsonStringBlock);
+			index = jsonBlock.getInt("index");
+			previousHash = jsonBlock.getString("previous_hash");
+			timeStamp = jsonBlock.getString("time_stamp");
+			data = jsonBlock.getString("data");
+			hash = jsonBlock.getString("hash");
+			
+		} catch (JSONException e1) {
+			System.out.println("Could not get json object from string");
+		}		
+				
+	}
 	
 	
 	// TODO: function that converts the object to json
