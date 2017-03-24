@@ -7,6 +7,7 @@ import org.json.*;
 
 public class Chain {
 	
+	
 	ArrayList<Block> chain;
 	
 	

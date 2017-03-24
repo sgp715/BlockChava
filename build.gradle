@@ -18,7 +18,7 @@ jar {
     version =  '0.1.0'
 }
 
-mainClassName = 'App'
+mainClassName = 'blockchava.Node'
 
 repositories {
     jcenter()
