@@ -26,28 +26,47 @@ public class Block {
 	String hash;
 	
 	
-	public Block(int index, String previousHash, String data) {
+	public Block(int i, String ph, String d) {
 		
-		this.index = index;
-		this.previousHash = previousHash;
-		this.timeStamp = new Date();
-		this.data = data;
+		index = i;
+		previousHash = ph;
+		timeStamp = new Date();
+		data = d;
 		
 		// need things to be strings before we can hash
-		this.hash = DigestUtils.sha1Hex(this.index + 
-										this.previousHash + 
-										this.timeStamp + 
-										this.data);
-		
-		System.out.println("this is the hash " + this.hash);
+		hash = DigestUtils.sha1Hex(
+				index + 
+				previousHash + 
+				timeStamp + 
+				data);
 		
 	}
 	
-	
 	// TODO: overload constructor to create block from json
+//	public Block(JSON json) {
+//		
+//	}
 	
 	
 	// TODO: function that converts the object to json
+	public String blockToJson() {
+		
+		JSONObject jsonBlock = new JSONObject();
+		
+		try {
+			jsonBlock.put("index", index);
+			jsonBlock.put("previous_hash", previousHash);
+			jsonBlock.put("time_stamp", timeStamp);
+			jsonBlock.put("data", data);
+			jsonBlock.put("hash", hash);
+		} catch (JSONException e) {
+			System.out.print("There was an excpetion creating json from block");
+//			e.printStackTrace();
+		}		
+		
+		return jsonBlock.toString();
+		
+	}
 
 	
 }

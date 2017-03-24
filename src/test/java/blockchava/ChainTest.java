@@ -8,7 +8,7 @@ public class ChainTest {
 	@Test 
 	public void testChainConstructor(){
 		Chain chain = new Chain();
-		assertTrue(true);
+		System.out.println(chain.chainToJson());
 	}
 
 }

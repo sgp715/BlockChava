@@ -2,22 +2,22 @@ package blockchava;
 
 import java.util.ArrayList;
 
+import org.json.*;
+
 public class Chain {
 	
 	
 	ArrayList<Block> chain;
 	
 	
-	public void Chain() {
+	public Chain() {
 		
 		// TODO: initiate a list of peers
-		
-		// this will hold all of the blocks in the chain
-		this.chain = new ArrayList();
+		chain = new ArrayList();
 		
 		// declare the genesis block and add it to the list
 		Block gb = new Block(0, "0", "genesis");		
-		this.chain.add(gb);	
+		chain.add(gb);	
 		
 	}
 	
@@ -25,7 +25,7 @@ public class Chain {
 	public Block getLastBlock(ArrayList<Block> chain) {
 		
 		int lastElementIndex = chain.size() - 1;
-		Block lastBlock = this.chain.get(lastElementIndex);
+		Block lastBlock = chain.get(lastElementIndex);
 		
 		return lastBlock;
 		
@@ -53,7 +53,7 @@ public class Chain {
 	
 	public Block generateNextBlock(String data) {
 		
-		Block lastBlock = getLastBlock(this.chain);
+		Block lastBlock = getLastBlock(chain);
 		
 		int nextBlockIndex = lastBlock.index + 1;
 		String lastHash = lastBlock.hash;
@@ -66,7 +66,7 @@ public class Chain {
 	
 	public void addBlock(Block newBlock) {
 		
-		Block lastBlock = getLastBlock(this.chain);
+		Block lastBlock = getLastBlock(chain);
 		
 		if (isValidNewBlock(lastBlock, newBlock)) {
 			chain.add(newBlock);
@@ -81,7 +81,7 @@ public class Chain {
 	public void handleNewChain(ArrayList<Block> newChain) {
 		
 		Block newChainLastBlock = getLastBlock(newChain);
-		Block chainLastBlock = getLastBlock(this.chain);
+		Block chainLastBlock = getLastBlock(chain);
 		
 		if (newChainLastBlock.index > chainLastBlock.index) {
 			
@@ -107,10 +107,28 @@ public class Chain {
 	}
 	
 	
-	// TODO: function that converts the chain to JSON
-	
-	
 	// TODO: function that converts json to array of blocks (chain)
+	
+	
+	public String chainToJson() {
+		
+		String[] jsonChainArray = new String[chain.size()];
+
+		for (int i = 0; i < chain.size(); i++) {
+			jsonChainArray[i] = chain.get(i).blockToJson();
+		}	
+			
+		JSONObject chainJson = new JSONObject();
+		try {
+			chainJson.put("chain", jsonChainArray);
+		} catch (JSONException e) {
+			System.out.print("Could not create json chain");
+			e.printStackTrace();
+		}
+		
+		return chainJson.toString();
+		
+	}
 	
 		
 }
