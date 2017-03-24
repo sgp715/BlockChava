@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package blockchava;
 
+import java.util.ArrayList;
 
 public class Chain {
 	

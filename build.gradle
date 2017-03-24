@@ -1,6 +1,22 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-spring-boot'
+    version =  '0.1.0'
+}
 
 mainClassName = 'App'
 
@@ -9,11 +25,20 @@ repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     
     compile 'commons-codec:commons-codec:1.10'
     compile	'org.json:json:20090211'
+    
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
 
     testCompile 'junit:junit:4.12'
 }
